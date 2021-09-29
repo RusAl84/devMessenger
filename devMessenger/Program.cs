@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Threading;
 
 namespace devMessenger
@@ -40,6 +41,11 @@ namespace devMessenger
     public int health;
     public int damage;
     string weapon;
+
+    public MegaEzh()
+    {
+    }
+
     public MegaEzh(string _name, int _health, int _demage, string _weapon)
     {
       this.name = _name;
@@ -65,7 +71,7 @@ namespace devMessenger
       {
         kogo.health -= kto.damage;
         Console.WriteLine(String.Format($"Ёжик {kto.name} атаковал {kogo.name}"));
-        Thread.Sleep(100);
+        Thread.Sleep(50);
       }
     }
     static void Battle(ref MegaEzh mEzh1, ref MegaEzh mEzh2, ref MegaEzh mEzh3, int n)
@@ -103,6 +109,12 @@ namespace devMessenger
       MegaEzh mEzh3 = new MegaEzh("Русаков", 150, 20, "ай, ай;)");
       Battle(ref mEzh1, ref mEzh2, ref mEzh3,5);
 
+      string jsonString = JsonConvert.SerializeObject(mEzh1);
+      Console.WriteLine(jsonString);
+      MegaEzh recoverEzh = new MegaEzh();
+      jsonString = "{ \"health\":30,\"damage\":3,\"name\":\"Никита\",\"age\":11}";
+      recoverEzh = JsonConvert.DeserializeObject<MegaEzh>(jsonString);
+      Console.WriteLine(recoverEzh);
     }
   }
 }
