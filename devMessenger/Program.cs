@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace devMessenger
 {
@@ -34,31 +35,74 @@ namespace devMessenger
                            $"Ёжику  {age} лет");
     }
   }
-  class megaEzh : Ezh
+  class MegaEzh : Ezh
   {
     public int health;
     public int damage;
     string weapon;
-    public megaEzh(int health, int demange, string weapon)
+    public MegaEzh(string _name, int _health, int _demage, string _weapon)
     {
-      this.health = health;
-      this.damage = demange;
-      this.weapon = weapon;
+      this.name = _name;
+      this.health = _health;
+      this.damage = _demage;
+      this.weapon = _weapon;
+    }
+
+    public override string ToString()
+    {
+      if (health>0)
+        return String.Format($"Ёжик: {name} Здоровье: {health}");
+      else
+        return String.Format($"Ёжик: {name} GameOver");
     }
   }
+
   class Program
   {
+    static void Atacka(ref MegaEzh kto, ref MegaEzh kogo)
+    {
+      if ((kto.health > 0) &&(kogo.health>0))
+      {
+        kogo.health -= kto.damage;
+        Console.WriteLine(String.Format($"Ёжик {kto.name} атаковал {kogo.name}"));
+        Thread.Sleep(100);
+      }
+    }
+    static void Battle(ref MegaEzh mEzh1, ref MegaEzh mEzh2, ref MegaEzh mEzh3, int n)
+    {
+      for (int i=0; i < n; i++) {
+        Console.WriteLine($"Battle №{i + 1}");
+        Atacka(ref mEzh1, ref mEzh2); // 1->2
+        Atacka(ref mEzh2, ref mEzh3); // 2->3
+        Atacka(ref mEzh3, ref mEzh1); // 3->1
+        Atacka(ref mEzh1, ref mEzh3); // 1->3
+        Atacka(ref mEzh2, ref mEzh1); // 2->1
+        Atacka(ref mEzh3, ref mEzh2); // 3->2
+        Console.WriteLine("___________________________");
+        Console.WriteLine(mEzh1);
+        Console.WriteLine(mEzh2);
+        Console.WriteLine(mEzh3);
+        Console.WriteLine("___________________________\n");
+      }
+    } 
     static void Main(string[] args)
     {
-      Ezh ezh1 = new Ezh();   //пример классов с разными конструкторами
-      Ezh ezh2 = new Ezh("Алихана");   //пример классов с разными конструкторами
-      Ezh ezh3 = new Ezh("Русаков", 36);   //пример классов с разными конструкторами 
-      //ezh1.Dislay();
-      //ezh2.Dislay();
-      //ezh3.Dislay();
-      Console.WriteLine(ezh1.ToString());
-      Console.WriteLine(ezh2);
-      Console.WriteLine(ezh3);
+      //Ezh ezh1 = new Ezh();   //пример классов с разными конструкторами
+      //Ezh ezh2 = new Ezh("Алихана");   //пример классов с разными конструкторами
+      //Ezh ezh3 = new Ezh("Русаков", 36);   //пример классов с разными конструкторами 
+      ////ezh1.Dislay();
+      ////ezh2.Dislay();
+      ////ezh3.Dislay();
+      //Console.WriteLine(ezh1.ToString());
+      //Console.WriteLine(ezh2);
+      //Console.WriteLine(ezh3);
+      //Акулбек
+      //Усама
+      MegaEzh mEzh1 = new MegaEzh("Акулбек", 100, 10, "кусь, кусь;)");
+      MegaEzh mEzh2 = new MegaEzh("Усама", 120, 15, "тук, тук;)");
+      MegaEzh mEzh3 = new MegaEzh("Русаков", 150, 20, "ай, ай;)");
+      Battle(ref mEzh1, ref mEzh2, ref mEzh3,5);
+
     }
   }
 }
