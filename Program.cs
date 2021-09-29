@@ -7,7 +7,7 @@ namespace devMessenger
     static void Main(string[] args)
     {
       Console.WriteLine("Hello World!");
-      Console.WriteLine("Ежик съел Андрея");
+      Console.WriteLine("Русаков съел Ёжика");
     }
   }
 }
