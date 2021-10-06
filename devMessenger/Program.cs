@@ -41,11 +41,9 @@ namespace devMessenger
     public int health;
     public int damage;
     string weapon;
-
     public MegaEzh()
     {
     }
-
     public MegaEzh(string _name, int _health, int _demage, string _weapon)
     {
       this.name = _name;
@@ -74,6 +72,14 @@ namespace devMessenger
         Thread.Sleep(50);
       }
     }
+    /// <summary>
+    /// Функция которая описывает сражение 3х ежей
+    /// </summary>
+    /// <param name="mEzh1">1й игрок</param>
+    /// <param name="mEzh2">2й игрок</param>
+    /// <param name="mEzh3">3й игрок</param>
+
+    /// <param name="n"></param>
     static void Battle(ref MegaEzh mEzh1, ref MegaEzh mEzh2, ref MegaEzh mEzh3, int n)
     {
       for (int i=0; i < n; i++) {
@@ -85,7 +91,7 @@ namespace devMessenger
         Atacka(ref mEzh2, ref mEzh1); // 2->1
         Atacka(ref mEzh3, ref mEzh2); // 3->2
         Console.WriteLine("___________________________");
-        Console.WriteLine(mEzh1);
+        Console.WriteLine(mEzh1.ToString());
         Console.WriteLine(mEzh2);
         Console.WriteLine(mEzh3);
         Console.WriteLine("___________________________\n");
@@ -102,19 +108,18 @@ namespace devMessenger
       //Console.WriteLine(ezh1.ToString());
       //Console.WriteLine(ezh2);
       //Console.WriteLine(ezh3);
-      //Акулбек
-      //Усама
-      MegaEzh mEzh1 = new MegaEzh("Акулбек", 100, 10, "кусь, кусь;)");
-      MegaEzh mEzh2 = new MegaEzh("Усама", 120, 15, "тук, тук;)");
-      MegaEzh mEzh3 = new MegaEzh("Русаков", 150, 20, "ай, ай;)");
-      Battle(ref mEzh1, ref mEzh2, ref mEzh3,5);
 
-      string jsonString = JsonConvert.SerializeObject(mEzh1);
-      Console.WriteLine(jsonString);
-      MegaEzh recoverEzh = new MegaEzh();
-      jsonString = "{ \"health\":30,\"damage\":3,\"name\":\"Никита\",\"age\":11}";
-      recoverEzh = JsonConvert.DeserializeObject<MegaEzh>(jsonString);
-      Console.WriteLine(recoverEzh);
+      MegaEzh mEzh1 = new MegaEzh("Вова", 100, 10, "кусь, кусь;)");
+      MegaEzh mEzh2 = new MegaEzh("Даня", 120, 15, "тук, тук;)");
+      MegaEzh mEzh3 = new MegaEzh("Русаков", 150, 20, "ай, ай;)");
+      Battle(ref mEzh1, ref mEzh2, ref mEzh3, 5);
+
+      //string jsonString = JsonConvert.SerializeObject(mEzh1);
+      //Console.WriteLine(jsonString);
+      //MegaEzh recoverEzh = new MegaEzh();
+      //jsonString = "{ \"health\":30,\"damage\":3,\"name\":\"Никита\",\"age\":11}";
+      //recoverEzh = JsonConvert.DeserializeObject<MegaEzh>(jsonString);
+      //Console.WriteLine(recoverEzh);
     }
   }
 }
