@@ -81,7 +81,7 @@ namespace TimerGUI
       this.textBox1.Name = "textBox1";
       this.textBox1.Size = new System.Drawing.Size(151, 87);
       this.textBox1.TabIndex = 3;
-      this.textBox1.Text = "00:03";
+      this.textBox1.Text = "10:00";
       this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
       // 
       // button1

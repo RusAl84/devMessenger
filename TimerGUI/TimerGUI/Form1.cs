@@ -38,9 +38,9 @@ namespace TimerGUI
       DateTime outputDateTime = Convert.ToDateTime(outputTime.ToString());
 
       label1.Text = outputDateTime.ToString("mm:ss");
-      DateTime zeroTime = DateTime.ParseExact("00:00", "mm:ss",
+      DateTime zeroTime = DateTime.ParseExact("00:01", "mm:ss",
                                  System.Globalization.CultureInfo.InvariantCulture);
-      if (zeroTime < outputDateTime)
+      if (zeroTime >= outputDateTime)
       {
         timer1.Enabled = false;
         startButton.Visible = true;
@@ -69,8 +69,7 @@ namespace TimerGUI
 
     private void button1_Click(object sender, EventArgs e)
     {
-      //System.IO.Stream str = Form1.Res 
-      //  Properties.Resources.mySoundFile;
+
       System.Media.SoundPlayer snd = new System.Media.SoundPlayer("1.wav");
       snd.Play();
     }
