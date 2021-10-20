@@ -18,6 +18,8 @@ namespace ServerASPCORE
     {
       Console.WriteLine(mes);
       Program.listOfMessages.AddMessage(mes);
+
+      //{"userName":"RusAl","messaageText":"Добрый день!","timeStamp":"20.10.2021 13:03:23"}
     }
 
   }
