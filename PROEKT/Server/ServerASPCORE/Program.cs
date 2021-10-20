@@ -11,6 +11,8 @@ namespace ServerASPCORE
 {
   public class Program
   {
+    public static MessangerLib.MessagesMasClass listOfMessages = new MessangerLib.MessagesMasClass();
+
     public static void Main(string[] args)
     {
       CreateHostBuilder(args).Build().Run();

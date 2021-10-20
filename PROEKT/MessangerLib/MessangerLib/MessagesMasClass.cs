@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MessangerLib
 {
-  class MessagesMasClass
+  public class MessagesMasClass
   {
     public List<MessageClass> data = new List<MessageClass>();
     public MessagesMasClass()
