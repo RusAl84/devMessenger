@@ -47,7 +47,7 @@ namespace TimerGUI
         stopButton.Visible = false;
         System.Media.SoundPlayer snd = new System.Media.SoundPlayer("1.wav");
         snd.Play();
-        MessageBox.Show("TImer");
+        MessageBox.Show("Timer");
 
       }
     }
